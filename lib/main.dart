@@ -1,3 +1,4 @@
+import 'package:dictionary_app/screens/common_screens/words_meaning.dart';
 import 'package:dictionary_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
-       home: HomeScreen(),
+       home: WordMeaning(),
     );
   }
 }
