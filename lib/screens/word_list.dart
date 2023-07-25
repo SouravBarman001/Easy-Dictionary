@@ -135,50 +135,52 @@ class _WordListState extends State<WordList> with TickerProviderStateMixin{
                   height: Get.height * .6,
                   child: Padding(
                     padding: const EdgeInsets.only(top: 25,left: 35),
-                    child: Column(
-                      children: [
-                        const Row(
-                          children: [
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          const Row(
+                            children: [
 
-                            SizedBox(width: 18,),
-                            Text('Word List',style: TextStyle(fontSize: 30,fontWeight: FontWeight.w500),),
+                              SizedBox(width: 18,),
+                              Text('Word List',style: TextStyle(fontSize: 30,fontWeight: FontWeight.w500),),
 
 
-                          ],
-                        ),
-                        const Divider(
-                          height: 30,
-                          thickness: 0.1,
-                          indent: 8,
-                          endIndent: 25,
-                          color: Colors.grey,
-                        ),
+                            ],
+                          ),
+                          const Divider(
+                            height: 30,
+                            thickness: 0.1,
+                            indent: 8,
+                            endIndent: 25,
+                            color: Colors.grey,
+                          ),
 
-                        Container(
-                         // color: Colors.lightBlue,
-                          padding:  const EdgeInsets.all(5),
-                          margin: const EdgeInsets.only(right: 15),
-                          width: double.maxFinite,
-                          height: Get.height * .45,
-                          // color: Colors.lightBlue,
-                          child:  Align(
-                            // alignment: Alignment.topCenter,
-                            child:ListView.builder(
-                              itemCount: en_syns.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                return Card(
-                                  elevation: 2,
-                                  child: ListTile(
-                                    // titleAlignment: ListTileTitleAlignment.center,
-                                    title: Text(en_syns[index].toString().capitalizeFirst!,textAlign: TextAlign.center,style: const TextStyle(fontSize: 18,fontWeight: FontWeight.w400),),
-                                  ),
-                                );
-                              },
+                          Container(
+                           // color: Colors.lightBlue,
+                            padding:  const EdgeInsets.all(5),
+                            margin: const EdgeInsets.only(right: 15),
+                            width: double.maxFinite,
+                            height: Get.height * .45,
+                            // color: Colors.lightBlue,
+                            child:  Align(
+                              // alignment: Alignment.topCenter,
+                              child:ListView.builder(
+                                itemCount: en_syns.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return Card(
+                                    elevation: 2,
+                                    child: ListTile(
+                                      // titleAlignment: ListTileTitleAlignment.center,
+                                      title: Text(en_syns[index].toString().capitalizeFirst!,textAlign: TextAlign.center,style: const TextStyle(fontSize: 18,fontWeight: FontWeight.w400),),
+                                    ),
+                                  );
+                                },
+                              ),
                             ),
                           ),
-                        ),
 
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),

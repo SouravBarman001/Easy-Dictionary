@@ -159,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               SizedBox(
-                height: Get.height * .16,
+                height: Get.height * .156,
               ),
               const BottomNavWidget(),
             ],

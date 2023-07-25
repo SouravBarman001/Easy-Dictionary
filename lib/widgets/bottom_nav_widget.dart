@@ -1,6 +1,8 @@
 import 'package:dictionary_app/screens/word_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../screens/translation_screen.dart';
 class BottomNavWidget extends StatelessWidget {
   const BottomNavWidget({
     super.key,
@@ -18,16 +20,21 @@ class BottomNavWidget extends StatelessWidget {
         children: [
           Column(
             children: [
-              Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: const Color(0xffe9eaff),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: const Icon(
-                    Icons.g_translate_rounded,
-                    color: Colors.blue,
-                  )),
+              InkWell(
+                onTap: (){
+                  Get.to(const TranslationScreen(),transition: Transition.downToUp,duration: const Duration(milliseconds: 500));
+                },
+                child: Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: const Color(0xffe9eaff),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: const Icon(
+                      Icons.g_translate_rounded,
+                      color: Colors.blue,
+                    ),),
+              ),
               const Text('Translate'),
             ],
           ),
