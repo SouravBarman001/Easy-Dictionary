@@ -1,8 +1,7 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../widgets/bottom_nav_widget.dart';
+import 'common_screens/words_meaning.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -138,13 +137,17 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(15),
                             ),
-                            child: const TextField(
+                            child: TextField(
                               decoration: InputDecoration(
                                 hintText:
                                     'Enter Word Here', // Optional: Placeholder text
                                 border: InputBorder.none,
                                 //   contentPadding: EdgeInsets.symmetric(horizontal: 20),
-                                icon: Icon(Icons.search_rounded),
+                                icon: InkWell(
+                                    onTap: () {
+                                      Get.to(const WordMeaning(),transition: Transition.zoom,duration: const Duration(milliseconds: 500));
+                                    },
+                                    child: const Icon(Icons.search_rounded)),
                                 fillColor: Colors.white,
                               ),
                             ),
@@ -166,5 +169,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
-

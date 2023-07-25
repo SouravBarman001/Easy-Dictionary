@@ -70,186 +70,190 @@ class _WordMeaningState extends State<WordMeaning> with TickerProviderStateMixin
     return Scaffold(
       backgroundColor: const Color(0xffeeeeff),
       body: SafeArea(
-          child: Column(
+          child: SingleChildScrollView(
+            child: Column(
         children: [
-          Container(
-            margin: const EdgeInsets.only(left: 3, right: 3),
-            decoration: const BoxDecoration(
-              color: Color(0xff28185c),
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(15),
-                topLeft: Radius.circular(15),
-                bottomRight: Radius.circular(40),
-                bottomLeft: Radius.circular(40),
+            Container(
+              margin: const EdgeInsets.only(left: 3, right: 3),
+              decoration: const BoxDecoration(
+                color: Color(0xff28185c),
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(15),
+                  topLeft: Radius.circular(15),
+                  bottomRight: Radius.circular(40),
+                  bottomLeft: Radius.circular(40),
+                ),
               ),
-            ),
-            width: double.infinity,
-            height: Get.height * .151,
-            child: Container(
-              margin: const EdgeInsets.only(top: 30),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(left: 10),
-                    child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.arrow_back_ios_new_rounded,
+              width: double.infinity,
+              height: Get.height * .151,
+              child: Container(
+                margin: const EdgeInsets.only(top: 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(left: 10),
+                      child: IconButton(
+                          onPressed: () {
+                            Get.back();
+                          },
+                          icon: const Icon(
+                            Icons.arrow_back_ios_new_rounded,
+                            color: Colors.white,
+                            size: 30,
+                          )),
+                    ),
+                    Container(
+                        margin: const EdgeInsets.only(right: 20),
+                        padding: const EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100),
                           color: Colors.white,
+                        ),
+                        child: const Icon(
+                          Icons.star_border_purple500_rounded,
+                          color: Colors.blue,
                           size: 30,
                         )),
-                  ),
-                  Container(
-                      margin: const EdgeInsets.only(right: 20),
-                      padding: const EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
-                        color: Colors.white,
-                      ),
-                      child: const Icon(
-                        Icons.star_border_purple500_rounded,
-                        color: Colors.blue,
-                        size: 30,
-                      )),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-          SizedBox(height: Get.height * .06,),
-          Container(
-            margin: const EdgeInsets.only(left: 10, right: 10),
-            decoration: const BoxDecoration(
-              color: Color(0xffffffff),
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(25),
-                topLeft: Radius.circular(25),
-                bottomRight: Radius.circular(25),
-                bottomLeft: Radius.circular(25),
+            SizedBox(height: Get.height * .06,),
+            Container(
+              margin: const EdgeInsets.only(left: 10, right: 10),
+              decoration: const BoxDecoration(
+                color: Color(0xffffffff),
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(25),
+                  topLeft: Radius.circular(25),
+                  bottomRight: Radius.circular(25),
+                  bottomLeft: Radius.circular(25),
+                ),
               ),
-            ),
-            width: double.infinity,
-            height: Get.height * .5,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 25,left: 35),
-              child: Column(
-                children: [
-                   Row(
-                     children: [
-                       InkWell(
-                         onTap: (){
-                           Get.defaultDialog(
-                               titlePadding: const EdgeInsets.all(14),
-                               title: 'Sorry...',
-                               middleText: 'Speech feature will be included in a later version.',
-                           );
-                         }
-                         ,child: Container(
-                             padding: const EdgeInsets.all(8)
-                             ,decoration: BoxDecoration(
-                             color: const Color(0xff3f13ce),
-                             borderRadius: BorderRadius.circular(100)
-                         )
-                             ,child: const Icon(Icons.keyboard_voice_outlined,color: Colors.white,size: 30,)),
-                       ),
-                       const SizedBox(width: 18,),
-                       const Column(
-                         children: [
-                           Text('carry',style: TextStyle(fontSize: 30),),
-                           SizedBox(height: 5,),
-                           Text('বহন',style: TextStyle(fontSize: 20),),
+              width: double.infinity,
+              height: Get.height * .5,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 25,left: 35),
+                child: Column(
+                  children: [
+                     Row(
+                       children: [
+                         InkWell(
+                           onTap: (){
+                             Get.defaultDialog(
+                                 titlePadding: const EdgeInsets.all(14),
+                                 title: 'Sorry...',
+                                 middleText: 'Speech feature will be included in a later version.',
+                             );
+                           }
+                           ,child: Container(
+                               padding: const EdgeInsets.all(8)
+                               ,decoration: BoxDecoration(
+                               color: const Color(0xff3f13ce),
+                               borderRadius: BorderRadius.circular(100)
+                           )
+                               ,child: const Icon(Icons.keyboard_voice_outlined,color: Colors.white,size: 30,)),
+                         ),
+                         const SizedBox(width: 18,),
+                         const Column(
+                           children: [
+                             Text('carry',style: TextStyle(fontSize: 30),),
+                             SizedBox(height: 5,),
+                             Text('বহন',style: TextStyle(fontSize: 20),),
 
-                         ],
-                       ),
+                           ],
+                         ),
 
-                     ],
-                   ),
-                  const Divider(
-                    height: 30,
-                    thickness: 0.7,
-                    indent: 1,
-                    endIndent: 20,
-                    color: Colors.black,
-                  ),
-                  Container(
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: TabBar(
-                        labelPadding: const EdgeInsets.only(left: 20,right: 20),
-                        labelColor: Colors.black,
-                        indicatorColor: Colors.lightBlue,
-                        unselectedLabelColor: Colors.teal,
-                        controller: tabController,
-                        tabs: const [
-                          Tab(text: 'Sentence',),
-                          Tab(text: 'EN_synonyms ',),
-                          Tab(text: 'BN_synonyms ',)
+                       ],
+                     ),
+                    const Divider(
+                      height: 30,
+                      thickness: 0.7,
+                      indent: 1,
+                      endIndent: 20,
+                      color: Colors.black,
+                    ),
+                    Container(
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: TabBar(
+                          labelPadding: const EdgeInsets.only(left: 20,right: 20),
+                          labelColor: Colors.black,
+                          indicatorColor: Colors.lightBlue,
+                          unselectedLabelColor: Colors.teal,
+                          controller: tabController,
+                          tabs: const [
+                            Tab(text: 'Sentence',),
+                            Tab(text: 'EN_synonyms ',),
+                            Tab(text: 'BN_synonyms ',)
 
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    padding:  const EdgeInsets.all(5),
-                    margin: const EdgeInsets.only(right: 15),
-                    width: double.maxFinite,
-                    height: 220,
-                   // color: Colors.lightBlue,
-                    child:  Align(
-                     // alignment: Alignment.topCenter,
-                      child: TabBarView(
-                        controller: tabController,
-                        children: [
-                          ListView.builder(
-                            itemCount: sents.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return Container(
-                                margin: const EdgeInsets.only(top: 5),
-                                child: Html(
-                                  data: sents[index],
-                                ),
-                              );
-                            },
-                          ),
-                          ListView.builder(
-                            itemCount: en_syns.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return Card(
-                                elevation: 0.3,
-                                child: ListTile(
-                                 // titleAlignment: ListTileTitleAlignment.center,
-                                  title: Text(en_syns[index].toString(),textAlign: TextAlign.center,),
-                                ),
-                              );
-                            },
-                          ),
-                          ListView.builder(
-                            itemCount: bn_syns.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return Card(
-                                elevation: 0.3,
-                                child: ListTile(
-                                  // titleAlignment: ListTileTitleAlignment.center,
-                                  title: Text(bn_syns[index].toString(),textAlign: TextAlign.center,),
-                                ),
-                              );
-                            },
-                          ),
-                        ],
+                    Container(
+                      padding:  const EdgeInsets.all(5),
+                      margin: const EdgeInsets.only(right: 15),
+                      width: double.maxFinite,
+                      height: 220,
+                     // color: Colors.lightBlue,
+                      child:  Align(
+                       // alignment: Alignment.topCenter,
+                        child: TabBarView(
+                          controller: tabController,
+                          children: [
+                            ListView.builder(
+                              itemCount: sents.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Container(
+                                  margin: const EdgeInsets.only(top: 5),
+                                  child: Html(
+                                    data: sents[index],
+                                  ),
+                                );
+                              },
+                            ),
+                            ListView.builder(
+                              itemCount: en_syns.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Card(
+                                  elevation: 0.3,
+                                  child: ListTile(
+                                   // titleAlignment: ListTileTitleAlignment.center,
+                                    title: Text(en_syns[index].toString(),textAlign: TextAlign.center,),
+                                  ),
+                                );
+                              },
+                            ),
+                            ListView.builder(
+                              itemCount: bn_syns.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Card(
+                                  elevation: 0.3,
+                                  child: ListTile(
+                                    // titleAlignment: ListTileTitleAlignment.center,
+                                    title: Text(bn_syns[index].toString(),textAlign: TextAlign.center,),
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
 
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-          SizedBox(
-            height: Get.height * .140,
-          ),
-          const BottomNavWidget(),
+            SizedBox(
+              height: Get.height * .140,
+            ),
+            const BottomNavWidget(),
         ],
-      )),
+      ),
+          )),
     );
   }
 }

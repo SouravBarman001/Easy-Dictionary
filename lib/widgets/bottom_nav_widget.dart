@@ -1,4 +1,6 @@
+import 'package:dictionary_app/screens/word_list.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 class BottomNavWidget extends StatelessWidget {
   const BottomNavWidget({
     super.key,
@@ -60,7 +62,10 @@ class BottomNavWidget extends StatelessWidget {
             ],
           ),
           InkWell(
-            onTap: (){},
+            onTap: (){
+              Get.to(const WordList(),transition: Transition.zoom,duration: const Duration(milliseconds: 500));
+
+            },
             child: Column(
               children: [
                 Container(
