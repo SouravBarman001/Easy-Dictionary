@@ -39,7 +39,7 @@ dependencies:
   page_transition: ^2.0.9
   auto_size_text: ^3.0.0
   font_awesome_flutter: ^10.5.0
-  http: 
+  http:
   shared_preferences: ^2.2.0
   flutter_advanced_drawer: ^1.3.5
   path_provider: ^2.0.2
@@ -84,7 +84,7 @@ flutter:
   assets:
    - images/
    - images/flags/
-
+   - json_wordlist/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

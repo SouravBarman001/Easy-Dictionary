@@ -3,6 +3,8 @@ import 'package:dictionary_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'dummy/get_data_from_json_and_show.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -14,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
-       home: HomeScreen(),
+       home: GetDataFromJson(),
     );
   }
 }
