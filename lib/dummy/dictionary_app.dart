@@ -36,15 +36,6 @@ class _DictionaryAppState extends State<DictionaryApp> {
             padding: const EdgeInsets.all(8.0),
             child: TextField(
               controller: textEditingController,
-              // onEditingComplete: () {
-              //   // setState(() {
-              //   //   words = textEditingController.value.toString();
-              //   //   // Perform search operation based on the "en" field
-              //   //   final box = Hive.box<Word>('dataBox');
-              //   //   searchResults = box.values.where((word) => word.en.toLowerCase().contains(words.toLowerCase())).toList();
-              //   //   print(searchResults)
-              //   // });
-              // },
               decoration: InputDecoration(
                 labelText: 'Search',
                 prefixIcon: InkWell(

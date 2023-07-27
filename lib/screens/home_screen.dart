@@ -16,18 +16,18 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
   final TextEditingController _textEditingController = TextEditingController();
+  DataItemController dataItemController = DataItemController();
+  HomeScreenController homeScreenController = HomeScreenController();
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    DataItemController dataItemController = DataItemController();
     dataItemController.storeData();
   }
 
   @override
   Widget build(BuildContext context) {
-    var word = Provider.of<HomeScreenController>(context);
 
     return Scaffold(
       backgroundColor: const Color(0xffeeeeff),
@@ -143,31 +143,23 @@ class _HomeScreenState extends State<HomeScreen> {
                             ],
                           ),
                           SizedBox(
-                            height: Get.height * .06,
+                            height: Get.height * .1,
                           ),
                           Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 5),
+                            margin: const EdgeInsets.symmetric(horizontal: 50),
                             width: Get.width * .8,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: TextField(
-                              controller: _textEditingController,
-                              decoration: InputDecoration(
-                                hintText:
-                                    'Enter Word Here', // Optional: Placeholder text
-                                border: InputBorder.none,
-                                //   contentPadding: EdgeInsets.symmetric(horizontal: 20),
-                                icon: InkWell(
-                                    onTap: () {
-                                      word.getWord(_textEditingController.value.text);
-                                    //  Get.to(const WordMeaning(),transition: Transition.zoom,duration: const Duration(milliseconds: 500));
-                                    },
-                                    child: const Icon(Icons.search_rounded)),
-                                fillColor: Colors.white,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor : const Color(0xffffffff),
+                                padding: const EdgeInsets.symmetric(vertical: 10),
                               ),
+                              onPressed: () {
+                                Get.to(()=> const WordMeaning(),transition: Transition.downToUp,duration: const Duration(milliseconds: 500));
+                              },
+                              child: const Text('Search Words',style: TextStyle(
+                                color: Colors.black87,
+                                fontSize: 18,
+                              ),),
                             ),
                           ),
                         ],
