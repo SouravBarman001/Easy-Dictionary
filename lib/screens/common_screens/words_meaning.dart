@@ -345,7 +345,7 @@ class _WordMeaningState extends State<WordMeaning>
               ),
             ),
                   SizedBox(
-              height: visibilityCheck == false ? Get.height * .62 : Get.height * .064,
+              height: visibilityCheck == false || searchResults.isEmpty  ? Get.height * .064 : Get.height * .064,
             ),
             const BottomNavWidget(),
           ],
