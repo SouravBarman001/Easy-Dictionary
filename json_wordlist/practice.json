@@ -1,9 +1,71 @@
-{
-  "id": "1001",
-  "name": "Sourav",
-  "age": 24,
-   "places": [
-     "india",
-     "US"
-   ]
-}
+[
+  {
+    "id": "1001",
+    "name": "Sourav",
+    "age": 24,
+    "places": [
+      "india",
+      "US"
+    ],
+    "images": [
+      {
+        "id": 10,
+        "name": "img1"
+      },
+      {
+        "id": 11,
+        "name": "img2"
+      },
+      {
+        "id": 12,
+        "name": "img3"
+      }
+    ]
+  },
+  {
+    "id": "1002",
+    "name": "Soumik",
+    "age": 24,
+    "places": [
+      "india",
+      "US"
+    ],
+    "images": [
+      {
+        "id": 10,
+        "name": "img1"
+      },
+      {
+        "id": 11,
+        "name": "img2"
+      },
+      {
+        "id": 12,
+        "name": "img3"
+      }
+    ]
+  },
+  {
+    "id": "1003",
+    "name": "Puspom",
+    "age": 24,
+    "places": [
+      "india",
+      "US"
+    ],
+    "images": [
+      {
+        "id": 10,
+        "name": "img1"
+      },
+      {
+        "id": 11,
+        "name": "img2"
+      },
+      {
+        "id": 12,
+        "name": "img3"
+      }
+    ]
+  }
+]

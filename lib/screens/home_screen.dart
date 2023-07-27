@@ -1,5 +1,8 @@
+import 'package:dictionary_app/controller/home_screen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
+import '../controller/data_item_controller.dart';
 import '../widgets/bottom_nav_widget.dart';
 import 'common_screens/words_meaning.dart';
 
@@ -11,8 +14,21 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  final TextEditingController _textEditingController = TextEditingController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    DataItemController dataItemController = DataItemController();
+    dataItemController.storeData();
+  }
+
   @override
   Widget build(BuildContext context) {
+    var word = Provider.of<HomeScreenController>(context);
+
     return Scaffold(
       backgroundColor: const Color(0xffeeeeff),
       body: SafeArea(
@@ -138,6 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               borderRadius: BorderRadius.circular(15),
                             ),
                             child: TextField(
+                              controller: _textEditingController,
                               decoration: InputDecoration(
                                 hintText:
                                     'Enter Word Here', // Optional: Placeholder text
@@ -145,7 +162,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 //   contentPadding: EdgeInsets.symmetric(horizontal: 20),
                                 icon: InkWell(
                                     onTap: () {
-                                      Get.to(const WordMeaning(),transition: Transition.zoom,duration: const Duration(milliseconds: 500));
+                                      word.getWord(_textEditingController.value.text);
+                                    //  Get.to(const WordMeaning(),transition: Transition.zoom,duration: const Duration(milliseconds: 500));
                                     },
                                     child: const Icon(Icons.search_rounded)),
                                 fillColor: Colors.white,

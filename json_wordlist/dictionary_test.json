@@ -1,0 +1,158 @@
+[
+  {
+    "pron": [
+      "ˈkarē",
+      "Bahana"
+    ],
+    "bn": "বহন",
+    "en": "carry",
+    "bn_syns": [
+      "বয়ে নিয়ে যাওয়া",
+      "বহন করা",
+      "টানা",
+      "বহিয়া লইয়া যাত্তয়া",
+      "সংবাহন করা",
+      "ধারণ করা",
+      "ভারবহন করা",
+      "ঘটান",
+      "নেত্তয়া",
+      "লত্তয়া",
+      "বলপূর্বক অধিকার করা",
+      "জের টানা",
+      "আচরণ করা",
+      "দেহভঙ্গি করা",
+      "গর্ভবতী হত্তয়া",
+      "পৌঁছাইয়া দেত্তয়া",
+      "পৌঁছান",
+      "লাভ করা",
+      "প্রকাশ করা",
+      "প্রসারিত হত্তয়া",
+      "বহা",
+      "ব্যাপ্ত হত্তয়া",
+      "বহন"
+    ],
+    "en_syns": [
+      "convey",
+      "transfer",
+      "move",
+      "take",
+      "bring",
+      "bear",
+      "lug",
+      "tote",
+      "fetch",
+      "cart"
+    ],
+    "sents": [
+      "Now, large supermarkets <b>carry</b> as many as 20,000 different food items on their shelves.",
+      "A few newspapers did <b>carry</b> the story but wildly distorted the facts, greatly upsetting the brothers."
+    ]
+  },
+  {
+    "pron": [
+      null,
+      "ˈkarət",
+      "Gājara"
+    ],
+    "bn": "গাজর",
+    "en": "carrot",
+    "bn_syns": [
+      "গাজর"
+    ],
+    "en_syns": [],
+    "sents": [
+      "The club has grown a wide variety of vegetables and herbs including <b>carrots</b> , Brussels sprouts and beetroot, as well as tomatoes and cucumbers in the greenhouse.",
+      "Once grown, the plants are difficult to transplant because of their long taproots - parsley is in the <b>carrot</b> family."
+    ]
+  },
+  {
+    "pron": [
+      "ˈkarēər",
+      "Bāhaka"
+    ],
+    "bn": "বাহক",
+    "en": "carrier",
+    "bn_syns": [
+      "বহনকারী",
+      "জঙ্গী বিমান",
+      "বাহক",
+      "সংবাহক",
+      "গাড়ী",
+      "মুটে",
+      "বেয়ারা",
+      "ধারয়িতা",
+      "বরদার"
+    ],
+    "en_syns": [
+      "bearer",
+      "conveyor",
+      "transporter",
+      "shipper",
+      "courier",
+      "hauler",
+      "porter"
+    ],
+    "sents": [
+      "Case Slick uses an alcohol <b>carrier</b> that evaporates and leaves just a little lube on the case.",
+      "In contrast, the sea waybill is only a contract of carriage whereby the <b>carrier</b> undertakes to deliver the cargo to the person identified by the shipper as entitled to take delivery of the cargo."
+    ]
+  },
+  {
+    "pron": [
+      "Rabibāra"
+    ],
+    "bn": "রবিবার",
+    "en": "Sabbath",
+    "bn_syns": [
+      "রবিবার"
+    ],
+    "en_syns": [],
+    "sents": []
+  },
+  {
+    "pron": [
+      "ˈsakrəmənt",
+      "Dharmasanskāra"
+    ],
+    "bn": "ধর্মসংস্কার",
+    "en": "sacrament",
+    "bn_syns": [
+      "কোনো গুরুত্বপূর্ণ প্রতিশ্রুতি",
+      "ধর্মসংস্কার",
+      "সংস্কার"
+    ],
+    "en_syns": [],
+    "sents": [
+      "Created reality is a <b>sacrament</b> , ‘a revelation of the presence of God.’",
+      "they used peyote as a <b>sacrament</b>"
+    ]
+  },
+  {
+    "pron": [
+      "ˈsadn",
+      "Sadden"
+    ],
+    "bn": "sadden",
+    "en": "sadden",
+    "bn_syns": [
+      "দুঃখ জাগানো"
+    ],
+    "en_syns": [
+      "depress",
+      "dispirit",
+      "deject",
+      "dishearten",
+      "grieve",
+      "desolate",
+      "discourage",
+      "upset",
+      "get down",
+      "bring down",
+      "break someone's heart"
+    ],
+    "sents": [
+      "News of his death at a relatively young age <b>saddened</b> his many friends in the local area.",
+      "Her death will <b>sadden</b> her fans, but her vast musical and political legacy that touched millions across the globe will live on."
+    ]
+  }
+]
