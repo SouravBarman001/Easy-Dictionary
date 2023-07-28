@@ -89,8 +89,10 @@ class DataItemController extends ChangeNotifier{
          }
 
          print('Data stored successfully.');
+
        }else{
          print('box is not empty');
+
        }
 
     } catch (e) {

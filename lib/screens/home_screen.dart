@@ -1,4 +1,5 @@
 import 'package:dictionary_app/controller/home_screen_controller.dart';
+import 'package:dictionary_app/controller/word_list_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
@@ -16,15 +17,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
   final TextEditingController _textEditingController = TextEditingController();
-  DataItemController dataItemController = DataItemController();
   HomeScreenController homeScreenController = HomeScreenController();
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    dataItemController.storeData();
-  }
 
   @override
   Widget build(BuildContext context) {

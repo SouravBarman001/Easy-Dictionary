@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
 import 'package:path/path.dart';
+import 'package:provider/provider.dart';
 
 import '../../widgets/bottom_nav_widget.dart';
+import '../controller/word_list_controller.dart';
+import '../hivedb/word.dart';
 
 class WordList extends StatefulWidget {
   const WordList({super.key});
@@ -13,59 +16,18 @@ class WordList extends StatefulWidget {
 }
 
 class _WordListState extends State<WordList> with TickerProviderStateMixin{
+  WordListController wordListController = WordListController();
 
-  final List<String> sents = [
-    "Now, large supermarkets <b>carry</b> as many as 20,000 different food items on their shelves.",
-    "A few newspapers did <b>carry</b> the story but wildly distorted the facts, greatly upsetting the brothers."
-  ];
-
-  // ignore: non_constant_identifier_names
-  final List<String> en_syns = [
-    "convey",
-    "transfer",
-    "move",
-    "take",
-    "bring",
-    "bear",
-    "lug",
-    "tote",
-    "fetch",
-    "cart"
-  ];
-
-  // ignore: non_constant_identifier_names
-  final List<String> bn_syns = [
-    "বয়ে নিয়ে যাওয়া",
-    "বহন করা",
-    "টানা",
-    "বহিয়া লইয়া যাত্তয়া",
-    "সংবাহন করা",
-    "ধারণ করা",
-    "ভারবহন করা",
-    "ঘটান",
-    "নেত্তয়া",
-    "লত্তয়া",
-    "বলপূর্বক অধিকার করা",
-    "জের টানা",
-    "আচরণ করা",
-    "দেহভঙ্গি করা",
-    "গর্ভবতী হত্তয়া",
-    "পৌঁছাইয়া দেত্তয়া",
-    "পৌঁছান",
-    "লাভ করা",
-    "প্রকাশ করা",
-    "প্রসারিত হত্তয়া",
-    "বহা",
-    "ব্যাপ্ত হত্তয়া",
-    "বহন"
-  ];
-
-
-
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    wordListController.getWordListTwo();
+  }
 
   @override
   Widget build(BuildContext context) {
-    TabController tabController = TabController(length: 3, vsync:this);
+   // final englishWordsCount = Provider.of<WordListController>(context);
 
     return Scaffold(
       backgroundColor: const Color(0xffeeeeff),
@@ -138,12 +100,14 @@ class _WordListState extends State<WordList> with TickerProviderStateMixin{
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-                          const Row(
+                           Row(
+                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
 
-                              SizedBox(width: 18,),
-                              Text('Word List',style: TextStyle(fontSize: 30,fontWeight: FontWeight.w500),),
-
+                             // const SizedBox(width: 18,),
+                              const Text('Word List',style: TextStyle(fontSize: 30,fontWeight: FontWeight.w500),),
+                            //  const SizedBox(width: 18,),
+                              Text("${WordListController.allWords.length} words")
 
                             ],
                           ),
@@ -164,16 +128,44 @@ class _WordListState extends State<WordList> with TickerProviderStateMixin{
                             // color: Colors.lightBlue,
                             child:  Align(
                               // alignment: Alignment.topCenter,
-                              child:ListView.builder(
-                                itemCount: en_syns.length,
-                                itemBuilder: (BuildContext context, int index) {
-                                  return Card(
-                                    elevation: 2,
-                                    child: ListTile(
-                                      // titleAlignment: ListTileTitleAlignment.center,
-                                      title: Text(en_syns[index].toString().capitalizeFirst!,textAlign: TextAlign.center,style: const TextStyle(fontSize: 18,fontWeight: FontWeight.w400),),
-                                    ),
-                                  );
+                              child:FutureBuilder<List<dynamic>>(
+                                future: Provider.of<WordListController>(context).getWordListTwo(),
+                                builder: (context, snapshot) {
+                                  if (snapshot.connectionState == ConnectionState.waiting) {
+                                    // Future is still loading
+                                    return const Center(child: CircularProgressIndicator());
+                                  } else if (snapshot.hasError) {
+                                    // Future loading failed
+                                    return const Center(child: Text('Error loading data'));
+                                  } else {
+                                    // Future loading completed, display the data
+                                    List<dynamic> englishWords = snapshot.data ?? [];
+                                    return ListView.builder(
+                                      itemCount: englishWords.length,
+                                      itemBuilder: (BuildContext context, int index) {
+                                        final word = englishWords[index];
+
+                                        var serialIndex = index+1;
+                                        return Card(
+                                          elevation: 2,
+                                          child: ListTile(
+                                            leading: Text(serialIndex.toString()),
+                                            title: Text(
+                                              englishWords[index].en.toString().toString(),
+                                              textAlign: TextAlign.center,
+                                              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+                                            ),
+                                            trailing: IconButton(
+                                                onPressed: () {
+                                                 // Handle button click to show word details
+                                                  _showWordDetails(context,word);
+                                                },
+                                                icon: const Icon(Icons.info_outline)),
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  }
                                 },
                               ),
                             ),
@@ -191,6 +183,34 @@ class _WordListState extends State<WordList> with TickerProviderStateMixin{
               ],
             ),
           )),
+    );
+  }
+  void _showWordDetails(BuildContext context, word) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Word Details'),
+          content: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text('English Word: ${word.en}'),
+              Text('Bengali Word: ${word.bn}'),
+              Text('Bengali Synonyms: ${word.bnSyns.join(', ')}'),
+              Text('English Synonyms: ${word.enSyns.join(', ')}'),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Close'),
+            ),
+          ],
+        );
+      },
     );
   }
 }

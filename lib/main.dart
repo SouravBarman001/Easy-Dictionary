@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 import 'controller/data_item_controller.dart';
 import 'controller/home_screen_controller.dart';
+import 'controller/word_list_controller.dart';
 import 'controller/word_meaning_controller.dart';
 
 import 'hivedb/word.dart';
@@ -18,11 +19,14 @@ Future<void> main() async {
   Hive.registerAdapter(WordAdapter());
   // Open the box
   await Hive.openBox<Word>('dataBox');
-//  DataItemController dataItemController = DataItemController();
+  DataItemController dataItemController = DataItemController();
+  dataItemController.storeData();
+
   runApp(MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_)=>HomeScreenController()),
         ChangeNotifierProvider(create: (_)=> WordMeaningController()),
+        ChangeNotifierProvider(create: (_)=> WordListController()),
 
       ],
       child: const MyApp()));

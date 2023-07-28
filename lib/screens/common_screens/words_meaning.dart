@@ -347,7 +347,7 @@ class _WordMeaningState extends State<WordMeaning>
                   SizedBox(
               height: visibilityCheck == false || searchResults.isEmpty  ? Get.height * .064 : Get.height * .064,
             ),
-            const BottomNavWidget(),
+               const BottomNavWidget(),
           ],
         ),
       )),

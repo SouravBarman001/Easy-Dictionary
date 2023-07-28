@@ -50,7 +50,7 @@ class BottomNavWidget extends StatelessWidget {
                     Icons.camera_alt_rounded,
                     color: Colors.blue,
                   )),
-              const Text('Image Search'),
+              const Text('Image To Text  '),
             ],
           ),
           Column(
