@@ -56,7 +56,6 @@ dependencies:
   flutter_html:
   translator:
   firebase_core:
-  firebase_ml_vision:
   animated_text_kit: ^4.2.2
 #  firebase_messaging:
 #  firebase_auth: ^4.6.3
@@ -67,6 +66,8 @@ dev_dependencies:
     sdk: flutter
   hive_generator: ^2.0.0
   build_runner: ^2.3.2
+#  firebase_ml_vision: ^0.12.0+3
+
 
 
   # The "flutter_lints" package below contains a set of recommended lints to
@@ -91,6 +92,7 @@ flutter:
    - images/
    - images/flags/
    - json_wordlist/
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
