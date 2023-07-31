@@ -17,57 +17,9 @@ class WordMeaning extends StatefulWidget {
 
 class _WordMeaningState extends State<WordMeaning>
     with TickerProviderStateMixin {
-  final List<String> sents = [
-    "Now, large supermarkets <b>carry</b> as many as 20,000 different food items on their shelves.",
-    "A few newspapers did <b>carry</b> the story but wildly distorted the facts, greatly upsetting the brothers."
-  ];
 
-  // ignore: non_constant_identifier_names
-  // final List<String> en_syns = [
-  //   "convey",
-  //   "transfer",
-  //   "move",
-  //   "take",
-  //   "bring",
-  //   "bear",
-  //   "lug",
-  //   "tote",
-  //   "fetch",
-  //   "cart"
-  // ];
-
-  // ignore: non_constant_identifier_names
-  // final List<String> bn_syns = [
-  //   "বয়ে নিয়ে যাওয়া",
-  //   "বহন করা",
-  //   "টানা",
-  //   "বহিয়া লইয়া যাত্তয়া",
-  //   "সংবাহন করা",
-  //   "ধারণ করা",
-  //   "ভারবহন করা",
-  //   "ঘটান",
-  //   "নেত্তয়া",
-  //   "লত্তয়া",
-  //   "বলপূর্বক অধিকার করা",
-  //   "জের টানা",
-  //   "আচরণ করা",
-  //   "দেহভঙ্গি করা",
-  //   "গর্ভবতী হত্তয়া",
-  //   "পৌঁছাইয়া দেত্তয়া",
-  //   "পৌঁছান",
-  //   "লাভ করা",
-  //   "প্রকাশ করা",
-  //   "প্রসারিত হত্তয়া",
-  //   "বহা",
-  //   "ব্যাপ্ত হত্তয়া",
-  //   "বহন"
-  // ];
-
-  List<dynamic> searchResults = [];
   final TextEditingController textEditingController = TextEditingController();
-  // ignore: prefer_typing_uninitialized_variables
-  var words;
-  var visibilityCheck = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -76,10 +28,11 @@ class _WordMeaningState extends State<WordMeaning>
 
     return Scaffold(
       backgroundColor: const Color(0xffeeeeff),
+      bottomNavigationBar: const BottomNavBarCommon(),
       body: SafeArea(
           child: SingleChildScrollView(
              child: Column(
-          children: [
+              children: [
                 Container(
                 margin: const EdgeInsets.only(left: 3, right: 3),
                 decoration: const BoxDecoration(
@@ -113,18 +66,6 @@ class _WordMeaningState extends State<WordMeaning>
                                 size: 30,
                               )),
                         ),
-                        Container(
-                            margin: const EdgeInsets.only(right: 20),
-                            padding: const EdgeInsets.all(5),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100),
-                              color: Colors.white,
-                            ),
-                            child: const Icon(
-                              Icons.star_border_purple500_rounded,
-                              color: Colors.blue,
-                              size: 30,
-                            )),
                       ],
                     ),
                     Container(
@@ -142,38 +83,7 @@ class _WordMeaningState extends State<WordMeaning>
                           hintText: 'Search',
                           prefixIcon: InkWell(
                               onTap: () {
-                                  //  final box = Hive.box<Word>('dataBox');
-                                  // var wordResults = box.values.where((word) => word.en.toLowerCase().contains(query.toLowerCase())).toList();
-                                  // print("value : $wordResults");
-                                  setState(() {
-                                    words =
-                                        textEditingController.text.toString();
-                                    print('Search word $words');
-                                    // Perform search operation based on the "en" field
-                                    final box = Hive.box<Word>('dataBox');
-                                    searchResults = box.values
-                                        .where((word) => word.en.toLowerCase() == words) // Compare exact matches only
-                                        .toList();
-
-                                    print(searchResults);
-                                    if(searchResults.isEmpty){
-                                      Get.snackbar(
-                                         "$words",
-                                         "Does not found!!",
-                                        icon: const Icon(Icons.not_listed_location_rounded, color: Colors.white),
-                                        snackPosition: SnackPosition.BOTTOM,
-                                        backgroundColor: Colors.green,
-                                        borderRadius: 20,
-                                        margin: const EdgeInsets.all(15),
-                                        colorText: Colors.white,
-                                        duration: const Duration(seconds: 4),
-                                        isDismissible: true,
-                                        forwardAnimationCurve: Curves.easeOutBack,
-                                      );
-                                    }
-                                    visibilityCheck = true;
-                                  });
-
+                                wordMeaningProvider.searchDataFromHive(textEditingController);
                               },
                               child: const Icon(Icons.search)),
                           border: const OutlineInputBorder(),
@@ -187,12 +97,12 @@ class _WordMeaningState extends State<WordMeaning>
                  SizedBox(
               height: Get.height * .018,
             ),
-                searchResults.isEmpty ? Container(
+                wordMeaningProvider.searchResults.isEmpty ? Container(
                   width: double.infinity,
                   height: Get.height * .56,
                   color: const Color(0xffeeeeff),
                 ) : Visibility(
-                  visible: visibilityCheck,
+                  visible: wordMeaningProvider.visibilityCheck,
                   child: Container(
                   margin: const EdgeInsets.only(left: 10, right: 10),
                   decoration: const BoxDecoration(
@@ -245,7 +155,7 @@ class _WordMeaningState extends State<WordMeaning>
                               child: ListView.builder(
                                   itemCount: 1,
                                   itemBuilder: (context, index) {
-                                    final getWord = searchResults[0];
+                                    final getWord = wordMeaningProvider.searchResults[0];
 
                                     return Column(
                                       mainAxisAlignment: MainAxisAlignment.center,
@@ -282,7 +192,7 @@ class _WordMeaningState extends State<WordMeaning>
                           child: ListView.builder(
                             itemCount: 1,
                             itemBuilder: (context, index) {
-                              final word = searchResults[index];
+                              final word = wordMeaningProvider.searchResults[index];
                               final bnSynonymsDisplay = word.bnSyns.join(', ');
                               final enSynonymsDisplay = word.enSyns.join(', ');
                               final sentsDisplay = word.sents.join('</br></br>');
@@ -345,9 +255,9 @@ class _WordMeaningState extends State<WordMeaning>
               ),
             ),
                   SizedBox(
-              height: visibilityCheck == false || searchResults.isEmpty  ? Get.height * .064 : Get.height * .064,
+              height: wordMeaningProvider.visibilityCheck == false || wordMeaningProvider.searchResults.isEmpty  ? Get.height * .064 : Get.height * .064,
             ),
-               const BottomNavWidget(),
+
           ],
         ),
       )),

@@ -1,96 +1,37 @@
-import 'package:dictionary_app/screens/word_list.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
-import '../screens/translation_screen.dart';
-class BottomNavWidget extends StatelessWidget {
-  const BottomNavWidget({
-    super.key,
-  });
+import '../controller/bottom_nav_controller.dart';
+class BottomNavBarCommon extends StatelessWidget {
+  const BottomNavBarCommon({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(10),
-      width: double.infinity,
-      height: 80,
-      color: const Color(0xffffffff),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Column(
-            children: [
-              InkWell(
-                onTap: (){
-                  Get.to(const TranslationScreen(),transition: Transition.downToUp,duration: const Duration(milliseconds: 500));
-                },
-                child: Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: const Color(0xffe9eaff),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: const Icon(
-                      Icons.g_translate_rounded,
-                      color: Colors.blue,
-                    ),),
-              ),
-              const Text('Translate'),
-            ],
-          ),
-          Column(
-            children: [
-              Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: const Color(0xffe9eaff),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: const Icon(
-                    Icons.camera_alt_rounded,
-                    color: Colors.blue,
-                  )),
-              const Text('Image To Text  '),
-            ],
-          ),
-          Column(
-            children: [
-              Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: const Color(0xffe9eaff),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: const Icon(
-                    Icons.favorite_border_outlined,
-                    color: Colors.blue,
-                  )),
-              const Text('Favorite'),
-            ],
-          ),
-          InkWell(
-            onTap: (){
-              Get.to(const WordList(),transition: Transition.zoom,duration: const Duration(milliseconds: 500));
+    final bottomNavController =  Provider.of<BottomNavController>(context);
 
-            },
-            child: Column(
-              children: [
-                Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: const Color(0xffe9eaff),  // normal --> 0xffe9eaff
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: const Icon(
-                      Icons.menu_book_rounded,
-                      color: Colors.blue,
-                    )),
-                const Text('Word List'),
-              ],
-            ),
-          )
-        ],
-      ),
+    return BottomNavigationBar(
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.g_translate_rounded,color: Colors.blue,),
+          label: 'Translate',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.camera_alt_rounded,color: Colors.blue,),
+          label: 'Image To Text',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.favorite_border_outlined,color: Colors.blue,),
+          label: 'Favorite',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.menu_book_rounded,color: Colors.blue,),
+          label: 'Word List',
+        ),
+      ],
+      currentIndex: bottomNavController.selectedIndex,
+      selectedItemColor: Colors.black,
+
+      onTap: bottomNavController.onItemTapped,
     );
   }
 }

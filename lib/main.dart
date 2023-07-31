@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 
+import 'controller/bottom_nav_controller.dart';
 import 'controller/data_item_controller.dart';
 import 'controller/home_screen_controller.dart';
 import 'controller/word_list_controller.dart';
@@ -27,6 +28,7 @@ Future<void> main() async {
         ChangeNotifierProvider(create: (_)=>HomeScreenController()),
         ChangeNotifierProvider(create: (_)=> WordMeaningController()),
         ChangeNotifierProvider(create: (_)=> WordListController()),
+        ChangeNotifierProvider(create: (_)=> BottomNavController()),
 
       ],
       child: const MyApp()));

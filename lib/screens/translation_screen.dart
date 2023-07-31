@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:translator/translator.dart';
 
+import '../widgets/bottom_nav_widget.dart';
+
 class TranslationScreen extends StatefulWidget {
   const TranslationScreen({super.key});
 
@@ -87,6 +89,7 @@ class _TranslationScreenState extends State<TranslationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //bottomNavigationBar: const BottomNavBarCommon(),
       appBar: AppBar(
         centerTitle: true,
         flexibleSpace: Container(

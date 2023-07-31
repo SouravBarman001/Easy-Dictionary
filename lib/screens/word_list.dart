@@ -65,18 +65,7 @@ class _WordListState extends State<WordList> with TickerProviderStateMixin{
                                 size: 30,
                               )),
                         ),
-                        Container(
-                            margin: const EdgeInsets.only(right: 20),
-                            padding: const EdgeInsets.all(5),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100),
-                              color: Colors.white,
-                            ),
-                            child: const Icon(
-                              Icons.star_border_purple500_rounded,
-                              color: Colors.blue,
-                              size: 30,
-                            )),
+
                       ],
                     ),
                   ),
@@ -94,7 +83,7 @@ class _WordListState extends State<WordList> with TickerProviderStateMixin{
                     ),
                   ),
                   width: double.infinity,
-                  height: Get.height * .6,
+                  height: Get.height * .67,
                   child: Padding(
                     padding: const EdgeInsets.only(top: 25,left: 35),
                     child: SingleChildScrollView(
@@ -124,7 +113,7 @@ class _WordListState extends State<WordList> with TickerProviderStateMixin{
                             padding:  const EdgeInsets.all(5),
                             margin: const EdgeInsets.only(right: 15),
                             width: double.maxFinite,
-                            height: Get.height * .45,
+                            height: Get.height * .53,
                             // color: Colors.lightBlue,
                             child:  Align(
                               // alignment: Alignment.topCenter,
@@ -179,7 +168,7 @@ class _WordListState extends State<WordList> with TickerProviderStateMixin{
                 SizedBox(
                   height: Get.height * .0450,
                 ),
-                const BottomNavWidget(),
+
               ],
             ),
           )),
@@ -190,6 +179,9 @@ class _WordListState extends State<WordList> with TickerProviderStateMixin{
       context: context,
       builder: (context) {
         return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
           title: const Text('Word Details'),
           content: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

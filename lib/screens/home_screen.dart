@@ -3,6 +3,7 @@ import 'package:dictionary_app/controller/word_list_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+import '../controller/bottom_nav_controller.dart';
 import '../controller/data_item_controller.dart';
 import '../widgets/bottom_nav_widget.dart';
 import 'common_screens/words_meaning.dart';
@@ -22,7 +23,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: const Color(0xffeeeeff),
       body: SafeArea(
@@ -165,11 +165,14 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 height: Get.height * .156,
               ),
-              const BottomNavWidget(),
+            //  const BottomNavWidget(),
             ],
           ),
         ),
       ),
+      bottomNavigationBar: const BottomNavBarCommon(),
     );
   }
+
+
 }
