@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import '../../widgets/bottom_nav_widget.dart';
 import '../controller/word_list_controller.dart';
 import '../hivedb/word.dart';
+import '../widgets/show_alert_dialog.dart';
 
 class WordList extends StatefulWidget {
   const WordList({super.key});
@@ -147,7 +148,7 @@ class _WordListState extends State<WordList> with TickerProviderStateMixin{
                                             trailing: IconButton(
                                                 onPressed: () {
                                                  // Handle button click to show word details
-                                                  _showWordDetails(context,word);
+                                                  ShowAlertDialog.showWordDetails(context,word);
                                                 },
                                                 icon: const Icon(Icons.info_outline)),
                                           ),
@@ -174,35 +175,5 @@ class _WordListState extends State<WordList> with TickerProviderStateMixin{
           )),
     );
   }
-  void _showWordDetails(BuildContext context, word) {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
-          ),
-          title: const Text('Word Details'),
-          content: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text('English Word: ${word.en}'),
-              Text('Bengali Word: ${word.bn}'),
-              Text('Bengali Synonyms: ${word.bnSyns.join(', ')}'),
-              Text('English Synonyms: ${word.enSyns.join(', ')}'),
-            ],
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text('Close'),
-            ),
-          ],
-        );
-      },
-    );
-  }
+
 }

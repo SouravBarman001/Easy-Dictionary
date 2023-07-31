@@ -1,5 +1,7 @@
 import 'package:dictionary_app/controller/home_screen_controller.dart';
 import 'package:dictionary_app/controller/word_list_controller.dart';
+import 'package:dictionary_app/widgets/show_alert_dialog.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
@@ -7,6 +9,7 @@ import '../controller/bottom_nav_controller.dart';
 import '../controller/data_item_controller.dart';
 import '../widgets/bottom_nav_widget.dart';
 import 'common_screens/words_meaning.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -46,19 +49,38 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-                          SizedBox(
-                            height: Get.height * .12,
+                          Container(
+                            margin: const EdgeInsets.only(top: 25,right: 25),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                 IconButton(onPressed: () {
+                                   ShowAlertDialog.showDevInfo(context);
+                                 }, icon: const Icon(CupertinoIcons.info,color: Colors.white,size: 25, ),),
+                              ],
+                            ),
                           ),
-                          const Text(
-                            'Welcome',
-                            style: TextStyle(
+                          SizedBox(
+                            height: Get.height * .10,
+                          ),
+                          DefaultTextStyle(
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 50,
                               fontWeight: FontWeight.w600,
                             ),
+                            child: AnimatedTextKit(
+                              animatedTexts: [
+                                TypewriterAnimatedText('Welcome',speed: const Duration(milliseconds: 500)),
+                              ],
+                              pause: const Duration(seconds: 2),
+                              repeatForever: true,
+                            ),
                           ),
+
+                          const SizedBox(height: 3,),
                           const Text(
-                            'English - Bangle',
+                            'English - Bangla',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 17,
@@ -137,23 +159,27 @@ class _HomeScreenState extends State<HomeScreen> {
                             ],
                           ),
                           SizedBox(
-                            height: Get.height * .1,
+                            height: Get.height * .08,
                           ),
-                          Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 50),
-                            width: Get.width * .8,
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor : const Color(0xffffffff),
-                                padding: const EdgeInsets.symmetric(vertical: 10),
+                          InkWell(
+                            onTap: (){
+                              Get.to(()=> const WordMeaning(),transition: Transition.downToUp,duration: const Duration(milliseconds: 500));
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(vertical: 15),
+                              alignment: Alignment.center,
+                              margin: const EdgeInsets.symmetric(horizontal: 50),
+                              width: Get.width * .8,
+                              decoration: BoxDecoration(
+                                color: Colors.lightBlue.shade600,
+                                borderRadius: BorderRadius.circular(50),
                               ),
-                              onPressed: () {
-                                Get.to(()=> const WordMeaning(),transition: Transition.downToUp,duration: const Duration(milliseconds: 500));
-                              },
-                              child: const Text('Search Words',style: TextStyle(
-                                color: Colors.black87,
-                                fontSize: 18,
-                              ),),
+                                child: const Text('Search Words',style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600
+                                ),),
+
                             ),
                           ),
                         ],

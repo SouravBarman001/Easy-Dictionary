@@ -28,22 +28,45 @@ class WordMeaningController extends ChangeNotifier{
         .where((word) => word.en.toLowerCase() == words) // Compare exact matches only
         .toList();
 
-    print(searchResults);
-    if(searchResults.isEmpty){
-      Get.snackbar(
-        "$words",
-        "This Word was not found.!!",
-        icon: const Icon(Icons.not_listed_location_rounded, color: Colors.white),
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.green,
-        borderRadius: 20,
-        margin: const EdgeInsets.all(15),
-        colorText: Colors.white,
-        duration: const Duration(seconds: 4),
-        isDismissible: true,
-        forwardAnimationCurve: Curves.easeOutBack,
-      );
+    if(textEditingController.text.isEmpty){
+      print(searchResults);
+      if(searchResults.isEmpty){
+        Get.snackbar(
+          "Please",
+          "Write Something.!!",
+          icon: const Icon(Icons.hourglass_empty_outlined, color: Colors.white),
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.blueAccent,
+          borderRadius: 20,
+          margin: const EdgeInsets.all(15),
+          colorText: Colors.white,
+          duration: const Duration(seconds: 4),
+          isDismissible: true,
+          forwardAnimationCurve: Curves.easeOutBack,
+
+        );
+      }
+    }else{
+      print(searchResults);
+      if(searchResults.isEmpty){
+        Get.snackbar(
+          "$words",
+          "This Word was not found.!!",
+          icon: const Icon(Icons.not_listed_location_rounded, color: Colors.white),
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.redAccent,
+          borderRadius: 20,
+          margin: const EdgeInsets.all(15),
+          colorText: Colors.white,
+          duration: const Duration(seconds: 4),
+          isDismissible: true,
+          forwardAnimationCurve: Curves.easeOutBack,
+        );
+      }
     }
+
+
+
     visibilityCheck = true;
 
     notifyListeners();

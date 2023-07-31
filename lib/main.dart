@@ -1,4 +1,5 @@
 import 'package:dictionary_app/screens/home_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -15,11 +16,14 @@ import 'hivedb/word.dart';
 Future<void> main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   await Hive.initFlutter();
   // Register Hive adapters
   Hive.registerAdapter(WordAdapter());
+  Hive.registerAdapter(FavouriteWordAdapter());
   // Open the box
   await Hive.openBox<Word>('dataBox');
+  await Hive.openBox<Word>('favouriteData');
   DataItemController dataItemController = DataItemController();
   dataItemController.storeData();
 
